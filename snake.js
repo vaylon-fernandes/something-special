@@ -121,11 +121,11 @@ function draw(){
     // if the snake eats the food
     if(snakeX == food.x && snakeY == food.y){
         score++;
-        end = i+1;
+        end = i+4;
         temp += link.slice(start,end);
         document.getElementById("url").innerHTML = temp;
-        start = i+1;
-        i++;
+        start = i+4;
+        i+=4;
         eat.play();
         food = {
             x : Math.floor(Math.random()*17+1) * box,
