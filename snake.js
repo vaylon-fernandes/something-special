@@ -87,7 +87,15 @@ function collision(head,array){
     }
     return false;
 }
-
+function gameOver() {
+    
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'middle'; 
+    ctx.textAlign = 'center'; 
+    ctx.font = 'normal bold 18px serif';
+    
+    ctx.fillText('Game over', C_WIDTH/2, C_HEIGHT/2);
+}
 // draw everything to the canvas
 
 function draw(){
@@ -126,6 +134,9 @@ function draw(){
         document.getElementById("url").innerHTML = temp;
         start = i+4;
         i+=4;
+        if(temp.length==link.length){
+            gameOver()
+        }
         eat.play();
         food = {
             x : Math.floor(Math.random()*17+1) * box,
