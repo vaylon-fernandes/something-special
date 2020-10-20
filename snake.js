@@ -53,6 +53,8 @@ let food = {
 
 let score = 0;
 let link = "https://meet.google.com/idb-cdem-rty"
+//let start = 0
+let i = 0
 //control the snake
 
 let d;
@@ -112,10 +114,18 @@ function draw(){
     if( d == "RIGHT") snakeX += box;
     if( d == "DOWN") snakeY += box;
     
+    let start = 0;
+    let end = 0;
+    //let i = 0;
+    let temp='';
     // if the snake eats the food
     if(snakeX == food.x && snakeY == food.y){
         score++;
-        document.getElementById("url").innerHTML = link 
+        end = i+1;
+        temp += link.slice(start,end);
+        document.getElementById("url").innerHTML = temp;
+        start = i+1;
+        i++;
         eat.play();
         food = {
             x : Math.floor(Math.random()*17+1) * box,
