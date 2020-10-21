@@ -17,6 +17,9 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
+const congrats = new Image();
+congrats.src = "img/congrats.png"
+
 // load audio files
 
 let dead = new Audio();
@@ -89,12 +92,18 @@ function collision(head,array){
 }
 function gameOver() {
     
-    ctx.fillStyle = 'white';
-    ctx.textBaseline = 'middle'; 
-    ctx.textAlign = 'center'; 
-    ctx.font = 'normal bold 18px serif';
+    //ctx.fillStyle = 'white';
+    //ctx.textBaseline = 'middle'; 
+    //ctx.textAlign = 'center'; 
+    //ctx.font = 'normal bold 18px serif';
     
-    ctx.fillText('Game over', C_WIDTH/2, C_HEIGHT/2);
+    //ctx.fillText('Game over', C_WIDTH/2, C_HEIGHT/2);
+    
+    clearInterval(game)
+    ctx.fillStyle = 'green'
+    ctx.fillText(score,2*box,1.6*box)
+    ctx.drawImage(congrats,0,0)
+    return True
 }
 // draw everything to the canvas
 
@@ -130,7 +139,8 @@ function draw(){
     if(snakeX == food.x && snakeY == food.y){
         score++;
         end = i+4;
-        temp += link.slice(start,end);
+        //temp += link.slice(start,end);
+        temp = link
         document.getElementById("url").innerHTML = temp;
         start = i+4;
         i+=4;
@@ -163,10 +173,16 @@ function draw(){
     }
     
     snake.unshift(newHead);
-    
-    ctx.fillStyle = "white";
-    ctx.font = "45px Changa one";
-    ctx.fillText(score,2*box,1.6*box);
+    if(not(gameOver())){
+        ctx.fillStyle = "white";
+        ctx.font = "45px Changa one";
+        ctx.fillText(score,2*box,1.6*box);
+    }
+    else{
+        ctx.fillStyle = "green";
+        ctx.font = "45px Changa one";
+        ctx.fillText(score,2*box,1.6*box);
+    }
 }
 
 // call draw function every 100 ms
