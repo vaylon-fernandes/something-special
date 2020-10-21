@@ -56,7 +56,7 @@ let food = {
 
 let score = 0;
 let link = "https://meet.google.com/idb-cdem-rty"
-//let start = 0
+
 let i = 0
 let finish = false;
 //control the snake
@@ -174,6 +174,29 @@ function draw(){
         ctx.font = "45px Changa one";
         ctx.fillText(score,2*box,1.6*box);
     
+}
+
+set = function(dir) {
+    if ( dir == "left" )
+    {
+        left.play();
+        d = "LEFT";
+    }
+    if ( dir == "right" )
+    {
+        d = "RIGHT";
+        right.play();
+    }
+    if ( dir == "up" )
+    {
+        d = "UP";
+        up.play();
+    }
+    if ( dir == "down" )
+    {
+        d = "DOWN";
+        down.play();
+    }
 }
 
 // call draw function every 100 ms
