@@ -58,6 +58,7 @@ let score = 0;
 let link = "https://meet.google.com/idb-cdem-rty"
 //let start = 0
 let i = 0
+let finish = false;
 //control the snake
 
 let d;
@@ -92,18 +93,10 @@ function collision(head,array){
 }
 function gameOver() {
     
-    //ctx.fillStyle = 'white';
-    //ctx.textBaseline = 'middle'; 
-    //ctx.textAlign = 'center'; 
-    //ctx.font = 'normal bold 18px serif';
-    
-    //ctx.fillText('Game over', C_WIDTH/2, C_HEIGHT/2);
     
     clearInterval(game)
-    ctx.fillStyle = 'green'
-    ctx.fillText(score,2*box,1.6*box)
     ctx.drawImage(congrats,0,0)
-    return True
+    finish = True
 }
 // draw everything to the canvas
 
@@ -143,7 +136,7 @@ function draw(){
 
         //for testing
         //temp = link
-        
+
         document.getElementById("url").innerHTML = temp;
         start = i+4;
         i+=4;
@@ -176,16 +169,11 @@ function draw(){
     }
     
     snake.unshift(newHead);
-    if(not(gameOver())){
-        ctx.fillStyle = "white";
+    
+        ctx.fillStyle = finish ? "green":"white";
         ctx.font = "45px Changa one";
         ctx.fillText(score,2*box,1.6*box);
-    }
-    else{
-        ctx.fillStyle = "green";
-        ctx.font = "45px Changa one";
-        ctx.fillText(score,2*box,1.6*box);
-    }
+    
 }
 
 // call draw function every 100 ms
