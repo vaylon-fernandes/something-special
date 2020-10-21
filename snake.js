@@ -139,8 +139,11 @@ function draw(){
     if(snakeX == food.x && snakeY == food.y){
         score++;
         end = i+4;
-        //temp += link.slice(start,end);
-        temp = link
+        temp += link.slice(start,end);
+
+        //for testing
+        //temp = link
+        
         document.getElementById("url").innerHTML = temp;
         start = i+4;
         i+=4;
